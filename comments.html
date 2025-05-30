@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Comments Fetch Example</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Comments</h1>
+    <div id="loading">Loading...</div>
+    <ul id="comments-list"></ul>
+
+    <script>
+      const loadingEl = document.getElementById("loading");
+      const commentsListEl = document.getElementById("comments-list");
+
+      const COMMENTS_API = "https://jsonplaceholder.typicode.com/comments";
+
+      fetch(COMMENTS_API)
+        .then((response) => {
+          if (!response.ok) throw new Error("Network response was not ok");
+          return response.json();
+        })
+        .then((data) => {
+          setTimeout(() => {
+            loadingEl.style.display = "none";
+
+            data.forEach((comment) => {
+              const li = document.createElement("li");
+              li.textContent = `${comment.name}: ${comment.body} : ${comment.email}`;
+              li.textContent;
+              commentsListEl.appendChild(li);
+            });
+          }, 2000);
+        })
+        .catch((error) => {
+          loadingEl.textContent = "Failed to load comments.";
+          console.error("Fetch error:", error);
+        });
+    </script>
+  </body>
+</html>
