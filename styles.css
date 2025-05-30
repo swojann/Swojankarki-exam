@@ -1,0 +1,18 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 2rem;
+}
+
+#loading {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}
